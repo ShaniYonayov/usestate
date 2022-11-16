@@ -1,6 +1,6 @@
 import { useState } from "react";
 function Counter() {
-    const [count, setCount] = useState(1) 
+    const [count, setCount] = useState(1)
     //נגדיר משתנה ואת הפונקציה שבאמצעותה המשתנה הזה יתעדכן
     // היוזסטייט יוצר את שני המשתנים ו1 זה הערך הראשון שלו ואני מחליטה את השמות שלהם
     function incr(){
@@ -10,19 +10,32 @@ function Counter() {
             // הפונק סטקאונט מקבלת פונקציה
             function(oldCount){
                 // הפונקציה הזאת מגדירה מה אני רוצה שיקרה כשאני מפעילה את אינקריז וזה שהערך יעלה ב1
-                return oldCount + 1
+                return oldCount +1
             }
         )
-        console.log(count)
+        
+         console.log(count)
         // באינקריז אני עושה עוד דברים חוץ מלעדכן את משתנה הסטייט
         // ובגלל זה לא הכנסתי את אולדקאונט לאוןקליק למטה
         // 
     }
-    return (
+    function reset(){
+      setCount(
+          function(){
+              return 1
+          }
+      )
+      
+       console.log(count)
+  }
+  // הוספתי פונקציה לאיתחול, המשתנה קאונט מתעדכן בעזרת הפונק טקאונט ולכן גם פה השתמשנו בו
+  // החזרנו 1 כי משם הספירה מתחילה וככה זה מתאפס
+     return (
       <div>
         <h1>Counter</h1>
-        <p>Counter is at {count}</p>
+        <p>Counter is at {count} </p>
         <button onClick={incr}>Click to add 1 to Counter</button>
+        <button onClick={reset}>Click to reset the Counter</button>
       </div>
     );
   }

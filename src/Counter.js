@@ -14,19 +14,14 @@ function Counter() {
             }
         )
         
-         console.log(count)
+        //  console.log(count)
         // באינקריז אני עושה עוד דברים חוץ מלעדכן את משתנה הסטייט
         // ובגלל זה לא הכנסתי את אולדקאונט לאוןקליק למטה
         // 
     }
     function reset(){
-      setCount(
-          function(){
-              return 1
-          }
-      )
+      setCount(0)
       
-       console.log(count)
   }
   // הוספתי פונקציה לאיתחול, המשתנה קאונט מתעדכן בעזרת הפונק טקאונט ולכן גם פה השתמשנו בו
   // החזרנו 1 כי משם הספירה מתחילה וככה זה מתאפס
@@ -35,7 +30,7 @@ function Counter() {
         <h1>Counter</h1>
         <p>Counter is at {count} </p>
         <button onClick={incr}>Click to add 1 to Counter</button>
-        <button onClick={reset}>Click to reset the Counter</button>
+        <button onClick={reset}>Reset Counter</button>
       </div>
     );
   }

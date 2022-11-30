@@ -7,14 +7,21 @@ import { useState } from 'react';
 function App() {
   const [delta, setDelta] = useState(1)
   const [max, setMax] = useState(10)
+  const [reset, setReset] = useState(false)
 
 function handelDelta(e){
   console.log(e);
   setDelta(Number(e.target.value))
 }
+
 function handelMax(m){
   setMax(Number(m.target.value))
   }  
+
+function getReset(data){
+  console.log(data)
+  setReset(data)
+}
 
   return (
     <div className="App">
@@ -25,8 +32,8 @@ function handelMax(m){
       <label>Enter Counter MAX number
         <input type="number" value = {max} onChange = {handelMax}/ >
       </label>
-      <Counter delta = {delta} max = {max} />
-      <Counter delta = {delta} max = {max} />
+      <Counter delta = {delta} max = {max} getReset = {getReset} needToReset = {reset} />
+      <Counter delta = {delta} max = {max} getReset = {getReset} needToReset = {reset} />
     </div>
   );
 }

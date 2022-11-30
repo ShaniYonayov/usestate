@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 function App() {
   const [delta, setDelta] = useState(1)
-  const [max, setMax] = useState(1)
+  const [max, setMax] = useState(10)
 
 function handelDelta(e){
   console.log(e);

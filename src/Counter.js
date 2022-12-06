@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 function Counter(props) {
-    const {delta, max, getReset, needToReset } = props
+    const {delta, max, getReset, needToReset, getAllMax } = props
     const [count, setCount] = useState(1)
  
     useEffect(()=>{
@@ -14,8 +14,14 @@ function Counter(props) {
     function incr(){
         setCount(      
             function(oldCount){
-                if (oldCount + delta > max ) return 0
+                if (oldCount + delta > max ){
+                   getAllMax(oldCount) 
+                   return 1
+                }
+                else{
+                    getAllMax(oldCount + delta)
                     return oldCount + delta   
+                }
             }
         )
     }

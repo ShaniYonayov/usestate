@@ -8,6 +8,7 @@ function App() {
   const [delta, setDelta] = useState(1)
   const [max, setMax] = useState(10)
   const [reset, setReset] = useState(false)
+  const [allMaxValue, setAllMaxValue] = useState(1)
 
 function handelDelta(e){
   console.log(e);
@@ -23,6 +24,16 @@ function getReset(data){
   setReset(data)
 }
 
+function getAllMax(data){
+  console.log(data)
+  if(data > allMaxValue){
+    setAllMaxValue(data)
+  }
+  else{
+    setAllMaxValue(allMaxValue)
+  }
+}
+
   return (
     <div className="App">
      <h1>Usestate</h1>
@@ -32,8 +43,10 @@ function getReset(data){
       <label>Enter Counter MAX number
         <input type="number" value = {max} onChange = {handelMax}/ >
       </label>
-      <Counter delta = {delta} max = {max} getReset = {getReset} needToReset = {reset} />
-      <Counter delta = {delta} max = {max} getReset = {getReset} needToReset = {reset} />
+      <label>Maximum value {allMaxValue}</label>
+      <Counter delta = {delta} max = {max} getReset = {getReset} needToReset = {reset} getAllMax = {getAllMax} />
+      <Counter delta = {delta} max = {max} getReset = {getReset} needToReset = {reset} getAllMax = {getAllMax} />
+
     </div>
   );
 }

@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 
 function Counter(props) {
-    const {delta, max, getReset, needToReset, getAllMax } = props
+    const {delta, max, getReset, needToReset, getCounter } = props
+    // ניקח מהאבא תפונקציה גאט קאונטר שמזהה תערך המקסימי
+    // אני מושכת תפונקציה מתוך הפרופס, מהאבא
     const [count, setCount] = useState(1)
  
     useEffect(()=>{
@@ -15,16 +17,21 @@ function Counter(props) {
         setCount(      
             function(oldCount){
                 if (oldCount + delta > max ){
-                   getAllMax(oldCount) 
-                   return 1
+                   getCounter(0) 
+                  //  אם זה לא גדול אז נכניס 0, לא מעניין אותי כמה
+                   return 0
+                  }
+                    // getCounter(oldCount + delta)
+                    // return oldCount + delta 
+                  // אם הערך יותר גדול אז נכניס את הערך החדש לפונקציה גאט קאונטר ושם המקס יתעדכן 
+                  let output = oldCount + delta
+                  getCounter(output)
+                  return output
+                  // דרך נוספת בה לא צריך לחשב פעמיים, פשוט שמנו תחישוב במשתנה חדש 
                 }
-                else{
-                    getAllMax(oldCount + delta)
-                    return oldCount + delta   
-                }
-            }
-        )
-    }
+            )
+        }
+    
     function reset(){
       getReset(true)
       // setCount(0)     
